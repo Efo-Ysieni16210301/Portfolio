@@ -31,7 +31,7 @@ export default function Experience() {
           {timeline.map((entry, i) => (
             <li key={entry.title} className="relative pb-14 last:pb-0">
               <span
-                className="absolute -left-[calc(2rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-base"
+                className="absolute -left-9.25 top-1.5 h-2.5 w-2.5 rounded-full border-2 border-base"
                 style={{
                   background: i === timeline.length - 1 ? "#ff6a3d" : "#33d6c8",
                 }}
