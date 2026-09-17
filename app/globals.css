@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-base: #0a0f1c;
+  --color-surface: #111a2b;
+  --color-surface-2: #16213a;
+  --color-line: #223252;
+  --color-ink: #e8ecf6;
+  --color-muted: #8794ab;
+  --color-signal: #ff6a3d;
+  --color-signal-dim: #a8492c;
+  --color-data: #33d6c8;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center -1px;
+  background-attachment: fixed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-base);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-data);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Traveling signal pulse used behind the hero */
+@keyframes travel {
+  0% {
+    stroke-dashoffset: 1200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.signal-path {
+  stroke-dasharray: 6 14;
+  animation: travel 26s linear infinite;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret {
+  animation: blink 1s step-end infinite;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
