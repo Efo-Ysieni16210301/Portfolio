@@ -37,9 +37,8 @@ export default function Contact() {
           Let&apos;s work together
         </h2>
         <p className="mt-4 max-w-xl leading-relaxed text-muted">
-          Open to freelance contracts and full-time full-stack roles.
-          Based in Addis Ababa, comfortable working with remote teams
-          across time zones.
+          Open to freelance contracts and full-time full-stack roles. Based in
+          Addis Ababa, comfortable working with remote teams across time zones.
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -54,7 +53,7 @@ export default function Contact() {
               <Icon className="h-5 w-5 text-signal" />
               <div>
                 <p className="font-mono text-xs text-muted">{label}</p>
-                <p className="mt-1 text-sm text-ink break-words">{value}</p>
+                <p className="mt-1 text-sm text-ink wrap-break-word">{value}</p>
               </div>
             </a>
           ))}
