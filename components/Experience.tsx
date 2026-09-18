@@ -9,7 +9,7 @@ const timeline = [
     range: "Nights & weekends, alongside the job above",
     title: "Self-Directed Full-Stack Web Development",
     org: "HTML, CSS, JavaScript, React, Next.js, Node.js",
-    body: "Taught myself the frontend and backend web stack while working full-time, then shipped five live, publicly deployed projects to prove it out — see below.",
+    body: "Taught myself the frontend and backend web stack while working full-time, then shipped seven live, publicly deployed projects to prove it out — see below.",
   },
   {
     range: "Present",
