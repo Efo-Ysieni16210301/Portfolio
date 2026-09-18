@@ -1,10 +1,18 @@
 const groups = [
   {
     label: "Frontend",
-    items: ["HTML5", "CSS3", "Tailwind CSS", "JavaScript (ES6+)", "TypeScript", "React.js", "Next.js"],
+    items: [
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "React.js",
+      "Next.js",
+    ],
   },
   {
-    label: "Backend & data",
+    label: "Backend & data (currently building)",
     items: ["Node.js", "Firebase (Auth & Firestore)", "REST APIs", "JSON"],
   },
   {

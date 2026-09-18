@@ -21,11 +21,11 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Getahun Guadie Mamo — Full-Stack Web Developer",
+  title: "Getahun Guadie Mamo — Full-Stack Web Developer (Frontend-Focused)",
   description:
     "Full-stack web developer building fast, reliable React & Next.js applications — backed by 5+ years keeping real telecom networks online.",
   openGraph: {
-    title: "Getahun Guadie Mamo — Full-Stack Web Developer",
+    title: "Getahun Guadie Mamo — Full-Stack Web Developer (Frontend-Focused)",
     description:
       "Full-stack web developer building fast, reliable React & Next.js applications — backed by 5+ years keeping real telecom networks online.",
     type: "website",

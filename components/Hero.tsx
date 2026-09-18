@@ -57,10 +57,7 @@ export default function Hero() {
         className="relative mx-auto flex max-w-5xl flex-col gap-10 md:flex-row md:items-center"
       >
         <div className="flex-1">
-          <motion.p
-            variants={item}
-            className="font-mono text-sm text-data"
-          >
+          <motion.p variants={item} className="font-mono text-sm text-data">
             Addis Ababa, Ethiopia — open to freelance &amp; full-time work
           </motion.p>
 
@@ -77,11 +74,13 @@ export default function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted"
           >
-            I&apos;m Getahun, a full-stack web developer working in React and
-            Next.js. Before writing my first line of production code, I spent
-            five years as a field network technician, so I build software
-            that accounts for latency, failure, and real-world load — not
-            just the happy path.
+            I&apos;m Getahun, a full-stack web developer who leans frontend —
+            React and Next.js are where I&apos;m strongest. Before writing my
+            first line of production code, I spent five years as a field network
+            technician, so I build interfaces that account for latency, failure,
+            and real-world load, not just the happy path. I&apos;m also actively
+            building out my backend skills (Node.js, Firebase) to round out the
+            stack.
           </motion.p>
 
           <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">
@@ -103,7 +102,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.div variants={item} className="flex justify-center md:justify-end">
+        <motion.div
+          variants={item}
+          className="flex justify-center md:justify-end"
+        >
           <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-2xl border border-line sm:h-48 sm:w-48">
             <Image
               src="/avatar.jpg"

@@ -3,10 +3,18 @@
 import { ExternalLink } from "lucide-react";
 
 type Project = {
-  key: "imdb" | "instagram" | "search" | "typing" | "begena";
+  key:
+    | "imdb"
+    | "instagram"
+    | "search"
+    | "typing"
+    | "begena"
+    | "mapty"
+    | "forkify";
   name: string;
   url: string;
   description: string;
+  note?: string;
   tech: string[];
   accent: "signal" | "data";
 };
@@ -22,21 +30,21 @@ const projects: Project[] = [
     accent: "signal",
   },
   {
-    key: "instagram",
-    name: "Instagram Clone",
-    url: "https://instagram-16210301.vercel.app/",
+    key: "forkify",
+    name: "Forkify — Recipe Search",
+    url: "https://fokify-16210301.netlify.app/",
     description:
-      "Social feed UI with a sign-in flow, a messages page, saved posts, and a personalized suggestions feed.",
-    tech: ["Next.js", "React", "Component architecture"],
-    accent: "data",
+      "Search over a million recipes through a public API, adjust ingredient quantities by serving size, bookmark favorites, and upload your own recipes — all persisted to local storage.",
+    tech: ["JavaScript (MVC)", "REST API", "Async/Await", "LocalStorage"],
+    accent: "signal",
   },
   {
-    key: "search",
-    name: "Google Search Clone",
-    url: "https://google-clone16210301.vercel.app/",
+    key: "mapty",
+    name: "Mapty — Workout Tracker",
+    url: "https://mapty-16210301.vercel.app/",
     description:
-      "A pixel-close recreation of Google's homepage and results experience — an exercise in layout precision.",
-    tech: ["Next.js", "React", "CSS"],
+      "Logs running and cycling workouts onto an interactive map using your live location, calculating pace and elevation automatically and saving every session locally.",
+    tech: ["JavaScript (OOP)", "Leaflet.js", "Geolocation API", "LocalStorage"],
     accent: "data",
   },
   {
@@ -55,6 +63,26 @@ const projects: Project[] = [
     description:
       "A playable Ethiopian ten-string harp in the browser — bilingual UI, multiple tunings, draggable strings, keyboard or on-screen control.",
     tech: ["JavaScript", "Web Audio API", "i18n"],
+    accent: "data",
+  },
+  {
+    key: "instagram",
+    name: "Instagram Clone",
+    url: "https://instagram-16210301.vercel.app/",
+    description:
+      "Social feed UI with a sign-in flow, a messages page, saved posts, and a personalized suggestions feed.",
+    note: "UI practice build — mock data, no live backend",
+    tech: ["Next.js", "React", "Component architecture"],
+    accent: "data",
+  },
+  {
+    key: "search",
+    name: "Google Search Clone",
+    url: "https://google-clone16210301.vercel.app/",
+    description:
+      "A pixel-close recreation of Google's homepage and results experience — an exercise in layout precision.",
+    note: "UI practice build — static sample results",
+    tech: ["Next.js", "React", "CSS"],
     accent: "data",
   },
 ];
@@ -97,6 +125,19 @@ function ProjectIcon({ type }: { type: Project["key"] }) {
           <path d="M6 3v18M10 4v16M14 5v14M18 6v12" />
         </svg>
       );
+    case "mapty":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
+          <path d="M9 20l-6-2.5V4.5L9 7l6-2.5 6 2.5v13l-6-2.5-6 2.5z" />
+          <path d="M9 7v13M15 4.5v13" />
+        </svg>
+      );
+    case "forkify":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
+          <path d="M6 3v7a2 2 0 0 0 2 2v9M6 3v9M8 3v9M10 3v7a2 2 0 0 1-2 2M17 3c-1.5 1-2 3-2 5s1 3 2 3v10" />
+        </svg>
+      );
   }
 }
 
@@ -105,7 +146,13 @@ const borderHoverClass: Record<Project["accent"], string> = {
   data: "hover:border-data",
 };
 
-function ProjectCard({ project, featured }: { project: Project; featured?: boolean }) {
+function ProjectCard({
+  project,
+  featured,
+}: {
+  project: Project;
+  featured?: boolean;
+}) {
   const accentClass = project.accent === "signal" ? "text-signal" : "text-data";
   return (
     <a
@@ -117,7 +164,9 @@ function ProjectCard({ project, featured }: { project: Project; featured?: boole
       }`}
     >
       <div>
-        <div className={`inline-flex rounded-lg border border-line p-2.5 ${accentClass}`}>
+        <div
+          className={`inline-flex rounded-lg border border-line p-2.5 ${accentClass}`}
+        >
           <ProjectIcon type={project.key} />
         </div>
         <h3
@@ -130,6 +179,11 @@ function ProjectCard({ project, featured }: { project: Project; featured?: boole
         <p className="mt-3 text-sm leading-relaxed text-muted">
           {project.description}
         </p>
+        {project.note && (
+          <p className="mt-2 text-xs italic leading-relaxed text-muted/70">
+            {project.note}
+          </p>
+        )}
       </div>
 
       <div className="mt-6 flex flex-wrap items-center gap-2">
@@ -162,8 +216,10 @@ export default function Projects() {
           Things I&apos;ve shipped
         </h2>
         <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-          Five live projects, deployed and publicly reachable — not just
-          repos. Click through to any of them.
+          Seven self-directed projects, deployed and publicly reachable — not
+          just repos. Most call live public APIs or use real browser APIs like
+          geolocation and audio; two are UI-only practice builds with sample
+          data, noted below. Click through to any of them.
         </p>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
