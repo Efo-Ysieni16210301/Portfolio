@@ -1,23 +1,15 @@
 const groups = [
   {
     label: "Frontend",
-    items: [
-      "HTML5",
-      "CSS3",
-      "Tailwind CSS",
-      "JavaScript (ES6+)",
-      "TypeScript",
-      "React.js",
-      "Next.js",
-    ],
+    items: ["HTML5", "CSS3", "Tailwind CSS", "JavaScript (ES6+)", "TypeScript", "React.js", "Next.js"],
   },
   {
-    label: "Backend & data (currently building)",
-    items: ["Node.js", "Firebase (Auth & Firestore)", "REST APIs", "JSON"],
+    label: "Backend & data",
+    items: ["Node.js", "MongoDB", "Firebase (Auth & Firestore)", "REST APIs", "Payment Integration (Chapa)"],
   },
   {
     label: "Tools & deployment",
-    items: ["Git / GitHub", "Vercel", "Netlify", "VS Code"],
+    items: ["Git / GitHub", "Vercel", "Netlify", "Render", "VS Code"],
   },
   {
     label: "The edge most developers don't have",
