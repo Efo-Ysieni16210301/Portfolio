@@ -58,12 +58,6 @@ export default function About() {
             </ul>
           </div>
         </div>
-
-        <p className="mt-10 max-w-2xl text-sm italic leading-relaxed text-muted">
-          In every step of this journey, I owe my strength to the Holy Virgin
-          Mary, the Mother of God, who is truly my life, my joy, my honor,
-          and my refuge — ህይወቴ፣ ደስታየ፣ ክብሬ፣ መመኪያየ.
-        </p>
       </div>
     </section>
   );
