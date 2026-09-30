@@ -3,14 +3,7 @@
 import { ExternalLink } from "lucide-react";
 
 type Project = {
-  key:
-    | "imdb"
-    | "instagram"
-    | "search"
-    | "typing"
-    | "begena"
-    | "mapty"
-    | "forkify";
+  key: "nechwork" | "imdb" | "instagram" | "search" | "typing" | "begena" | "mapty" | "forkify";
   name: string;
   url: string;
   description: string;
@@ -20,6 +13,15 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    key: "nechwork",
+    name: "Nech Work — E-Commerce Platform",
+    url: "https://nechwork-16210301.vercel.app/",
+    description:
+      "Full-stack e-commerce platform for Ethiopian goods — coffee, tea, pantry, and home items — with real payment processing in both Birr and USD via Chapa, Google and email/password authentication, a shopping cart, order history, and a bilingual (Amharic/English) interface with dark mode. Backed by a full admin dashboard for managing products, categories, gallery content, orders, customers, and newsletter subscribers.",
+    tech: ["React", "TypeScript", "MongoDB", "Firebase Auth", "Chapa Payments", "Admin Dashboard", "Render", "i18n"],
+    accent: "signal",
+  },
   {
     key: "imdb",
     name: "IMDb Clone",
@@ -70,9 +72,8 @@ const projects: Project[] = [
     name: "Instagram Clone",
     url: "https://instagram-16210301.vercel.app/",
     description:
-      "Social feed UI with a sign-in flow, a messages page, saved posts, and a personalized suggestions feed.",
-    note: "UI practice build — mock data, no live backend",
-    tech: ["Next.js", "React", "Component architecture"],
+      "Full-stack social app with Google authentication, image posting with captions, likes and comments, and real-time direct messaging between users — backed by Firebase.",
+    tech: ["Next.js", "React", "Firebase Auth", "Firestore", "Realtime Chat"],
     accent: "data",
   },
   {
@@ -90,6 +91,13 @@ const projects: Project[] = [
 function ProjectIcon({ type }: { type: Project["key"] }) {
   const common = { className: "h-6 w-6", strokeWidth: 1.6 };
   switch (type) {
+    case "nechwork":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
+          <path d="M6 6h15l-1.5 9h-12z" />
+          <path d="M6 6l-1-3H2M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+        </svg>
+      );
     case "imdb":
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
@@ -146,13 +154,7 @@ const borderHoverClass: Record<Project["accent"], string> = {
   data: "hover:border-data",
 };
 
-function ProjectCard({
-  project,
-  featured,
-}: {
-  project: Project;
-  featured?: boolean;
-}) {
+function ProjectCard({ project, featured }: { project: Project; featured?: boolean }) {
   const accentClass = project.accent === "signal" ? "text-signal" : "text-data";
   return (
     <a
@@ -164,9 +166,7 @@ function ProjectCard({
       }`}
     >
       <div>
-        <div
-          className={`inline-flex rounded-lg border border-line p-2.5 ${accentClass}`}
-        >
+        <div className={`inline-flex rounded-lg border border-line p-2.5 ${accentClass}`}>
           <ProjectIcon type={project.key} />
         </div>
         <h3
@@ -216,10 +216,11 @@ export default function Projects() {
           Things I&apos;ve shipped
         </h2>
         <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-          Seven self-directed projects, deployed and publicly reachable — not
-          just repos. Most call live public APIs or use real browser APIs like
-          geolocation and audio; two are UI-only practice builds with sample
-          data, noted below. Click through to any of them.
+          Eight self-directed projects, deployed and publicly reachable —
+          not just repos. Most run on real backends (Firebase, MongoDB) or
+          call live public APIs and browser APIs like geolocation and
+          audio; one is a UI-only practice build with sample data, noted
+          below. Click through to any of them.
         </p>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
