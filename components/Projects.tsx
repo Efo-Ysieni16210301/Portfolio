@@ -16,10 +16,10 @@ const projects: Project[] = [
   {
     key: "nechwork",
     name: "Nech Work — E-Commerce Platform",
-    url: "https://nechwork-16210301.vercel.app/",
+    url: "https://nechwork.vercel.app/",
     description:
-      "Full-stack e-commerce platform for Ethiopian goods — coffee, tea, pantry, and home items — with real payment processing in both Birr and USD via Chapa, Google and email/password authentication, a shopping cart, order history, and a bilingual (Amharic/English) interface with dark mode. Backed by a full admin dashboard for managing products, categories, gallery content, orders, customers, and newsletter subscribers.",
-    tech: ["React", "TypeScript", "MongoDB", "Firebase Auth", "Chapa Payments", "Admin Dashboard", "Render", "i18n"],
+      "Full-stack e-commerce platform for Ethiopian goods — coffee, tea, pantry, and home items — with real payment processing in both Birr and USD via Chapa,or pay the seller directly, and folllow their order with GPS delivery tracking. Google and email/password authentication, a shopping cart, order history, and a bilingual (Amharic/English) interface with dark mode. Backed by a full admin dashboard for managing products, categories, gallery content, orders, customers, and newsletter subscribers.",
+    tech: ["Next.js", "React", "TypeScript", "Node.js","MongoDB", "Firebase Auth", "Chapa Payments", "Admin Dashboard", "GPS tracking", "i18n"],
     accent: "signal",
   },
   {
