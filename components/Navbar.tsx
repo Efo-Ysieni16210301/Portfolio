@@ -1,18 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
+import type { SiteContent } from "@/lib/content";
 
 const links = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
+  { href: "#skills", label: "Toolkit" },
   { href: "#contact", label: "Contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ content }: { content: SiteContent }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -22,42 +24,21 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled
-          ? "bg-base/90 border-line backdrop-blur"
-          : "border-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a
-          href="#top"
-          className="font-mono text-sm tracking-tight text-ink hover:text-signal transition-colors"
-        >
-          getahun<span className="text-signal">.</span>dev
-        </a>
-
-        <ul className="hidden items-center gap-8 md:flex">
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      <nav className="nav-inner" aria-label="Main navigation">
+        <a href="#top" className="nav-brand">{content.hero.name.split(" ")[0]}<span>.</span></a>
+        <ul className={`nav-links ${menuOpen ? "is-open" : ""}`}>
           {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-muted hover:text-ink transition-colors"
-              >
-                {link.label}
-              </a>
-            </li>
+            <li key={link.href}><a href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</a></li>
           ))}
+          <li className="mobile-resume">
+            <a href={content.hero.resumeUrl} download onClick={() => setMenuOpen(false)}>Résumé <Download size={15} /></a>
+          </li>
         </ul>
-
-        <a
-          href="/resume.pdf"
-          download="Getahun_Guadie_Mamo_Resume.pdf"
-          className="group inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-ink hover:border-signal hover:text-signal transition-colors"
-        >
-          Resume
-          <Download className="h-3.5 w-3.5 transition-transform group-hover:translate-y-0.5" />
-        </a>
+        <a href={content.hero.resumeUrl} download className="nav-resume">Résumé <Download size={14} /></a>
+        <button type="button" className="nav-menu-button" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </nav>
     </header>
   );

@@ -1,62 +1,42 @@
-const then = [
-  "Installed and repaired fiber, routers, and wireless links across live sites",
-  "Diagnosed faults under time pressure using network monitoring tools",
-  "Kept backup power — generators, UPS, battery banks — running through outages",
-  "Documented infrastructure plans to a compliance standard",
-];
+import { ArrowUpRight, Check } from "lucide-react";
+import type { SiteContent } from "@/lib/content";
+import RichText from "@/components/RichText";
 
-const now = [
-  "Build responsive, accessible interfaces with React, Next.js, and TypeScript",
-  "Build real backends: MongoDB, Firebase Auth & Firestore, REST APIs",
-  "Integrated live payment processing (Chapa) into a full e-commerce platform",
-  "Debug with the same patience I used tracing a fault to one bad splice",
-];
-
-export default function About() {
+export default function About({ content }: { content: SiteContent }) {
+  const { about } = content;
   return (
-    <section id="about" className="border-b border-line px-6 py-24">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="font-display text-3xl font-semibold text-ink">
-          What changed, and what didn&apos;t
-        </h2>
-        <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-          I have a BSc in Electrical and Computer Engineering from Woldia
-          University, and spent five years as a Field Operations Technician
-          at Ethio Telecom. The tools changed when I moved into web
-          development. The way I work — methodical, comfortable under
-          pressure, obsessive about reliability — didn&apos;t.
-        </p>
-
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
-          <div className="bg-surface p-8">
-            <p className="font-mono text-sm text-muted">2020 – 2026</p>
-            <h3 className="font-display mt-2 text-xl font-semibold text-ink">
-              Field Operations Technician
-            </h3>
-            <ul className="mt-6 space-y-3">
-              {then.map((line) => (
-                <li key={line} className="flex gap-3 text-sm leading-relaxed text-muted">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-muted" />
-                  {line}
-                </li>
-              ))}
-            </ul>
+    <section id="about" className="section-shell about-section">
+      <div className="section-grid">
+        <div className="section-aside">
+          <span className="section-index">01 / ABOUT</span>
+          <span className="section-aside-note">A little context<br />goes a long way.</span>
+        </div>
+        <div className="section-content">
+          <h2 className="section-title">{about.title}</h2>
+          <RichText html={about.intro} className="section-lead" />
+          <div className="about-cards">
+            <article className="about-card">
+              <span className="about-card-index">BEFORE THE BROWSER</span>
+              <p className="about-period">{about.pastPeriod}</p>
+              <h3>{about.pastTitle}</h3>
+              <ul>
+                {about.pastItems.map((item, index) => (
+                  <li key={`${index}-${item.slice(0, 20)}`}><Check size={16} /><RichText html={item} /></li>
+                ))}
+              </ul>
+            </article>
+            <article className="about-card about-card-current">
+              <span className="about-card-index">WHAT I BRING TODAY</span>
+              <p className="about-period">A systems-first mindset</p>
+              <h3>{about.currentTitle}</h3>
+              <ul>
+                {about.currentItems.map((item, index) => (
+                  <li key={`${index}-${item.slice(0, 20)}`}><Check size={16} /><RichText html={item} /></li>
+                ))}
+              </ul>
+            </article>
           </div>
-
-          <div className="bg-surface p-8">
-            <p className="font-mono text-sm text-signal">Now</p>
-            <h3 className="font-display mt-2 text-xl font-semibold text-ink">
-              Full-Stack Developer
-            </h3>
-            <ul className="mt-6 space-y-3">
-              {now.map((line) => (
-                <li key={line} className="flex gap-3 text-sm leading-relaxed text-ink/90">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal" />
-                  {line}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <a className="text-link about-link" href="#experience">More about my path <ArrowUpRight size={16} /></a>
         </div>
       </div>
     </section>

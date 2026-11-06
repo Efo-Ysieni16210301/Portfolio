@@ -1,235 +1,68 @@
-"use client";
+import { ArrowUpRight, Code2, ExternalLink, Layers3 } from "lucide-react";
+import type { Project, SiteContent } from "@/lib/content";
+import RichText from "@/components/RichText";
 
-import { ExternalLink } from "lucide-react";
-
-type Project = {
-  key: "nechwork" | "imdb" | "instagram" | "search" | "typing" | "begena" | "mapty" | "forkify";
-  name: string;
-  url: string;
-  description: string;
-  note?: string;
-  tech: string[];
-  accent: "signal" | "data";
-};
-
-const projects: Project[] = [
-  {
-    key: "nechwork",
-    name: "Nech Work — E-Commerce Platform",
-    url: "https://nechwork.vercel.app/",
-    description:
-      "Full-stack e-commerce platform for Ethiopian goods — coffee, tea, pantry, and home items — with real payment processing in both Birr and USD via Chapa,or pay the seller directly, and folllow their order with GPS delivery tracking. Google and email/password authentication, a shopping cart, order history, and a bilingual (Amharic/English) interface with dark mode. Backed by a full admin dashboard for managing products, categories, gallery content, orders, customers, and newsletter subscribers.",
-    tech: ["Next.js", "React", "TypeScript", "Node.js","MongoDB", "Firebase Auth", "Chapa Payments", "Admin Dashboard", "GPS tracking", "i18n"],
-    accent: "signal",
-  },
-  {
-    key: "imdb",
-    name: "IMDb Clone",
-    url: "https://imdb16210301.vercel.app/",
-    description:
-      "Movie discovery app with trending and top-rated feeds, live search, and dynamic detail pages, powered by a real-time third-party movie API.",
-    tech: ["Next.js", "React", "REST API", "Dynamic routing"],
-    accent: "signal",
-  },
-  {
-    key: "forkify",
-    name: "Forkify — Recipe Search",
-    url: "https://fokify-16210301.netlify.app/",
-    description:
-      "Search over a million recipes through a public API, adjust ingredient quantities by serving size, bookmark favorites, and upload your own recipes — all persisted to local storage.",
-    tech: ["JavaScript (MVC)", "REST API", "Async/Await", "LocalStorage"],
-    accent: "signal",
-  },
-  {
-    key: "mapty",
-    name: "Mapty — Workout Tracker",
-    url: "https://mapty-16210301.vercel.app/",
-    description:
-      "Logs running and cycling workouts onto an interactive map using your live location, calculating pace and elevation automatically and saving every session locally.",
-    tech: ["JavaScript (OOP)", "Leaflet.js", "Geolocation API", "LocalStorage"],
-    accent: "data",
-  },
-  {
-    key: "typing",
-    name: "Amharic Typing Speed Test",
-    url: "https://typing-16210301.netlify.app/",
-    description:
-      "Typing trainer tracking WPM and accuracy live, with custom text sources and a score history exportable to CSV/JSON.",
-    tech: ["JavaScript", "LocalStorage", "Data export"],
-    accent: "signal",
-  },
-  {
-    key: "begena",
-    name: "Interactive Begena Simulator",
-    url: "https://begenaupdate16210301.netlify.app/",
-    description:
-      "A playable Ethiopian ten-string harp in the browser — bilingual UI, multiple tunings, draggable strings, keyboard or on-screen control.",
-    tech: ["JavaScript", "Web Audio API", "i18n"],
-    accent: "data",
-  },
-  {
-    key: "instagram",
-    name: "Instagram Clone",
-    url: "https://instagram-16210301.vercel.app/",
-    description:
-      "Full-stack social app with Google authentication, image posting with captions, likes and comments, and real-time direct messaging between users — backed by Firebase.",
-    tech: ["Next.js", "React", "Firebase Auth", "Firestore", "Realtime Chat"],
-    accent: "data",
-  },
-  {
-    key: "search",
-    name: "Google Search Clone",
-    url: "https://google-clone16210301.vercel.app/",
-    description:
-      "A pixel-close recreation of Google's homepage and results experience — an exercise in layout precision.",
-    note: "UI practice build — static sample results",
-    tech: ["Next.js", "React", "CSS"],
-    accent: "data",
-  },
-];
-
-function ProjectIcon({ type }: { type: Project["key"] }) {
-  const common = { className: "h-6 w-6", strokeWidth: 1.6 };
-  switch (type) {
-    case "nechwork":
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
-          <path d="M6 6h15l-1.5 9h-12z" />
-          <path d="M6 6l-1-3H2M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-        </svg>
-      );
-    case "imdb":
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <path d="M3 9h18M8 5v4M8 15v4" />
-          <path d="M11 13l4-2v6l-4-2z" />
-        </svg>
-      );
-    case "instagram":
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
-          <path d="M21 12a9 9 0 1 1-4-7.5" />
-          <circle cx="17" cy="6" r="1.4" fill="currentColor" stroke="none" />
-        </svg>
-      );
-    case "search":
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
-          <circle cx="10.5" cy="10.5" r="6.5" />
-          <path d="M20 20l-4.5-4.5" />
-        </svg>
-      );
-    case "typing":
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
-          <rect x="3" y="6" width="18" height="12" rx="2" />
-          <path d="M7 10h.01M11 10h.01M15 10h.01M17 10h.01M7 14h8" />
-        </svg>
-      );
-    case "begena":
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
-          <path d="M6 3v18M10 4v16M14 5v14M18 6v12" />
-        </svg>
-      );
-    case "mapty":
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
-          <path d="M9 20l-6-2.5V4.5L9 7l6-2.5 6 2.5v13l-6-2.5-6 2.5z" />
-          <path d="M9 7v13M15 4.5v13" />
-        </svg>
-      );
-    case "forkify":
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...common}>
-          <path d="M6 3v7a2 2 0 0 0 2 2v9M6 3v9M8 3v9M10 3v7a2 2 0 0 1-2 2M17 3c-1.5 1-2 3-2 5s1 3 2 3v10" />
-        </svg>
-      );
-  }
-}
-
-const borderHoverClass: Record<Project["accent"], string> = {
-  signal: "hover:border-signal",
-  data: "hover:border-data",
-};
-
-function ProjectCard({ project, featured }: { project: Project; featured?: boolean }) {
-  const accentClass = project.accent === "signal" ? "text-signal" : "text-data";
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noreferrer"
-      className={`group flex flex-col justify-between rounded-2xl border border-line bg-surface p-7 transition-colors ${borderHoverClass[project.accent]} ${
-        featured ? "md:p-9" : ""
-      }`}
-    >
-      <div>
-        <div className={`inline-flex rounded-lg border border-line p-2.5 ${accentClass}`}>
-          <ProjectIcon type={project.key} />
-        </div>
-        <h3
-          className={`font-display mt-5 font-semibold text-ink ${
-            featured ? "text-2xl" : "text-lg"
-          }`}
-        >
-          {project.name}
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted">
-          {project.description}
-        </p>
-        {project.note && (
-          <p className="mt-2 text-xs italic leading-relaxed text-muted/70">
-            {project.note}
-          </p>
+    <article className={`project-card project-${project.visual} ${project.featured ? "project-featured" : ""}`}>
+      <div className={`project-art ${project.imageUrl ? "has-project-image" : ""}`} style={project.imageUrl ? { backgroundImage: `linear-gradient(180deg,rgba(16,19,25,.03),rgba(16,19,25,.22)),url("${project.imageUrl.replace(/["\\]/g, "")}")` } : undefined}>
+        {!project.imageUrl && (
+          <>
+            <div className="project-art-glow" />
+            <div className="project-art-orbit project-art-orbit-a" />
+            <div className="project-art-orbit project-art-orbit-b" />
+            <div className="project-art-grid" />
+            <span className="project-art-mark">{String(index + 1).padStart(2, "0")}</span>
+            <div className="project-art-cube"><Layers3 strokeWidth={1.1} /></div>
+            <span className="project-art-caption">A closer look <ArrowUpRight size={14} /></span>
+          </>
         )}
+        {project.imageUrl && <span className="project-art-caption">A closer look <ArrowUpRight size={14} /></span>}
+        {project.featured && <span className="project-featured-badge">FEATURED WORK</span>}
       </div>
-
-      <div className="mt-6 flex flex-wrap items-center gap-2">
-        {project.tech.map((t) => (
-          <span
-            key={t}
-            className="font-mono rounded-full border border-line px-2.5 py-1 text-xs text-muted"
-          >
-            {t}
-          </span>
-        ))}
+      <div className="project-card-content">
+        <div className="project-card-meta"><span>{project.category}</span><span className="project-number">{String(index + 1).padStart(2, "0")}</span></div>
+        <h3>{project.title}</h3>
+        <RichText html={project.description} className="project-description" />
+        {project.note && <p className="project-note">{project.note}</p>}
+        <div className="project-tags">
+          {project.tech.map((tag) => <span key={tag}>{tag}</span>)}
+        </div>
+        <div className="project-links">
+          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Live project <ExternalLink size={15} /></a>}
+          {project.sourceUrl && <a href={project.sourceUrl} target="_blank" rel="noreferrer"><Code2 size={15} /> Source code</a>}
+        </div>
       </div>
-
-      <div
-        className={`mt-6 inline-flex items-center gap-1.5 text-sm font-medium ${accentClass}`}
-      >
-        View live
-        <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </div>
-    </a>
+    </article>
   );
 }
 
-export default function Projects() {
-  const [featured, ...rest] = projects;
+export default function Projects({ content }: { content: SiteContent }) {
+  const projects = content.projects.items.filter((project) => project.visible);
   return (
-    <section id="projects" className="border-b border-line px-6 py-24">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="font-display text-3xl font-semibold text-ink">
-          Things I&apos;ve shipped
-        </h2>
-        <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-          Eight self-directed projects, deployed and publicly reachable —
-          not just repos. Most run on real backends (Firebase, MongoDB) or
-          call live public APIs and browser APIs like geolocation and
-          audio; one is a UI-only practice build with sample data, noted
-          below. Click through to any of them.
-        </p>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          <div className="md:col-span-2">
-            <ProjectCard project={featured} featured />
+    <section id="projects" className="projects-section">
+      <div className="section-shell">
+        <div className="section-grid">
+          <div className="section-aside">
+            <span className="section-index">03 / SELECTED WORK</span>
+            <span className="section-aside-note">Made to solve<br />real problems.</span>
           </div>
-          {rest.map((project) => (
-            <ProjectCard key={project.key} project={project} />
-          ))}
+          <div className="section-content">
+            <div className="projects-heading">
+              <div>
+                <h2 className="section-title">{content.projects.title}</h2>
+                <RichText html={content.projects.intro} className="section-lead" />
+              </div>
+              <span className="project-count"><Code2 size={17} /> {String(projects.length).padStart(2, "0")} projects</span>
+            </div>
+            {projects.length > 0 ? (
+              <div className="projects-grid">
+                {projects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}
+              </div>
+            ) : (
+              <div className="projects-empty">New work is on the way. Check back soon.</div>
+            )}
+          </div>
         </div>
       </div>
     </section>

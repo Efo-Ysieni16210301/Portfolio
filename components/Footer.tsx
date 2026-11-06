@@ -1,9 +1,14 @@
-export default function Footer() {
+import { ArrowUp, Heart } from "lucide-react";
+import type { SiteContent } from "@/lib/content";
+
+export default function Footer({ content }: { content: SiteContent }) {
   return (
-    <footer className="border-t border-line px-6 py-8">
-      <div className="mx-auto flex max-w-5xl flex-col gap-2 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} Getahun Guadie Mamo</p>
-        <p className="font-mono">Built with Next.js, Tailwind CSS &amp; Framer Motion</p>
+    <footer className="site-footer">
+      <div className="footer-inner">
+        <a className="footer-brand" href="#top">{content.footer.brand}<span>.</span></a>
+        <p>{content.footer.tagline}</p>
+        <span className="footer-built">Designed with care <Heart size={13} /> · {new Date().getFullYear()}</span>
+        <a className="back-to-top" href="#top" aria-label="Back to top"><ArrowUp size={17} /></a>
       </div>
     </footer>
   );
